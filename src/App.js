@@ -3,13 +3,17 @@ import nameAnythingYouWant,{ sayNiHou as Nihou } from './sayHi.js'
 
 // 某個會被儲存在Global變數isJohn
 var isJohn = true
-if(isJohn) {
-  var nameIsJohn = 'John'
+let nameIsJohn = 'John'
+function changeName () {
+  if(isJohn) {
+    nameIsJohn = 'QQ'
+  }
 }
 function Card4() {
   return <div>{nameIsJohn}</div> 
 }
-
+// 嘗試著解除下面這1行程式碼的註解
+// changeName()
 // 嘗試著解除下面這幾行程式碼的註解
 // Card4 = () => {
 //   if(isJohn === true)
