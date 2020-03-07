@@ -8,6 +8,11 @@ const OldStyleCardWithLink = () =>{
       'h2',
       null,
       "How're you?"
+    ),    
+    React.createElement(
+      'button',
+      null,
+      ["Click 我，但是我不會為了你做什麼的!"]
     ),
     React.createElement(
       'a',
