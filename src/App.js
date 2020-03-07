@@ -1,5 +1,24 @@
 import React from 'react';
 import nameAnythingYouWant,{ sayNiHou as Nihou } from './sayHi.js'
+
+// 某個會被儲存在Global變數isJohn
+var isJohn = true
+if(isJohn) {
+  var nameIsJohn = 'John'
+}
+function Card4() {
+  return <div>{nameIsJohn}</div> 
+}
+
+// 嘗試著解除下面這幾行程式碼的註解
+// Card4 = () => {
+//   if(isJohn === true)
+//   {
+//     nameIsJohn = 'Tom'
+//   }
+//   return <div>{nameIsJohn}</div>
+// }
+
 function App() {
   // nameAnythingYouWant他會直接指向有default的function
   nameAnythingYouWant()
@@ -11,6 +30,7 @@ function App() {
       <Card2/>
       <Card3 name={'Ken'}/>
       <Card3 name={'KK'}/>
+      <Card4 />
     </div>
   );
 }
