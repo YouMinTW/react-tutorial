@@ -1,6 +1,10 @@
 import React from 'react';
-
+import nameAnythingYouWant,{ sayNiHou as Nihou } from './sayHi.js'
 function App() {
+  // nameAnythingYouWant他會直接指向有default的function
+  nameAnythingYouWant()
+  // 原本沒default的export出去之後，要引入需要{}，而透過 as 之後可以取別名
+  Nihou()
   return (
     <div className="App">
       <Card/>
