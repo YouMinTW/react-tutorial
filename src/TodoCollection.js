@@ -13,7 +13,7 @@ const TodoCollection = () => {
   }
   return (
     <form>
-      <input type='text' onChange={handleChange}></input>
+      <input type='text' onChange={handleChange} value={newTodo}></input>
       <button onClick={handleSubmit}>新增個todo吧 另一種方式</button>
       <button type='submit'>新增個todo</button>
       <ul>
