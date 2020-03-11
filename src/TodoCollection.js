@@ -3,21 +3,23 @@ import React from 'react'
 const TodoCollection = () => {
   const [ todos,setTodos ] = React.useState([{name:'刷牙',done:false},{name:'遛狗',done:false}])
   const [ newTodo,setNewTodo ] = React.useState()
-  const handleAddToDo = () => {
-    setTodos([...todos, {name:newTodo,done:false}])
+  const handleChange = (e) => {
+    setNewTodo(e.currentTarget.value)
   }
-  const handleAddToDoType2 = (newTodo) => {
-    setTodos([...todos, newTodo])
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setTodos([...todos, {name:newTodo, done:true}])
+    setNewTodo('')
   }
   return (
-    <>
-      <input type='text' onChange={e => setNewTodo(e.currentTarget.value)}></input>
-      <button onClick={handleAddToDo}>新增個todo吧</button>
-      <button onClick={()=>handleAddToDoType2({name:'睡覺',done:false})}>新增個todo Type2吧</button>
+    <form>
+      <input type='text' onChange={handleChange}></input>
+      <button onClick={handleSubmit}>新增個todo吧 另一種方式</button>
+      <button type='submit'>新增個todo</button>
       <ul>
         { todos.map(todo => <li>{todo.name}</li>) }
       </ul>
-    </>
+    </form>
   )
 }
 export default TodoCollection
