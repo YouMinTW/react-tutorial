@@ -8,7 +8,7 @@ const TodoCollection = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setTodos([...todos, {name:newTodo, done:true}])
+    setTodos([...todos, {name:newTodo, done:false}])
     setNewTodo('')
   }
   return (
