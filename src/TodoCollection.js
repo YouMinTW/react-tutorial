@@ -2,14 +2,16 @@ import React from 'react'
 
 const TodoCollection = () => {
   const [ todos,setTodos ] = React.useState([{name:'刷牙',done:false},{name:'遛狗',done:false}])
-  const [ newTodo,setNewTodo ] = React.useState()
+  const [ newTodo,setNewTodo ] = React.useState('')
   const handleChange = (e) => {
     setNewTodo(e.currentTarget.value)
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    setTodos([...todos, {name:newTodo, done:false}])
-    setNewTodo('')
+    if(newTodo !== ''){
+      setTodos([...todos, {name:newTodo, done:false}])
+      setNewTodo('')
+    }
   }
   return (
     <form onSubmit={handleSubmit}>
