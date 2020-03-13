@@ -21,7 +21,7 @@ const TodoCollection = () => {
       <button type='submit'>新增個todo</button>
     </form>
     <ul>
-        { todos.map(todo => <li>{todo.name}</li>) }
+        { todos.map(todo => <li key={todo.name}>{todo.name}</li>) }
     </ul>
     </>
   )
