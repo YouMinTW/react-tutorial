@@ -1,7 +1,7 @@
 import React from 'react'
-
+import { v4 as uuidv4 } from 'uuid';
 const TodoCollection = () => {
-  const [ todos,setTodos ] = React.useState([{name:'刷牙',done:false},{name:'遛狗',done:false}])
+  const [ todos,setTodos ] = React.useState([{id:uuidv4(), name:'刷牙',done:false},{id:uuidv4(),name:'遛狗',done:false}])
   const [ newTodo,setNewTodo ] = React.useState('')
   const handleChange = (e) => {
     setNewTodo(e.currentTarget.value)
@@ -9,16 +9,16 @@ const TodoCollection = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if(newTodo !== ''){
-      setTodos([...todos, {name:newTodo, done:false}])
+      setTodos([...todos, {id:uuidv4(),name:newTodo, done:false}])
       setNewTodo('')
     }
   }
-  const handleDelete = (name) =>{
-    const filterTodos = todos.filter((todo) =>todo.name !== name)
+  const handleDelete = (id) => {
+    const filterTodos = todos.filter((todo) =>todo.id !== id)
     setTodos(filterTodos)
   }
-  const handleToggleFinish  = (name) =>{
-    const filterTodos = todos.map((todo) => todo.name === name ? { name:todo.name,done:!todo.done} : todo)
+  const handleToggleFinish  = (id) =>{
+    const filterTodos = todos.map((todo) => todo.id === id ? { ...todo, done:!todo.done} : todo)
     setTodos(filterTodos)
   }
   return (
@@ -30,11 +30,13 @@ const TodoCollection = () => {
 
     <ul>
         { todos.map(todo => (
-          <div key={todo.name}>
-            <li> {todo.name}</li>
-            <button onClick={() =>handleDelete(todo.name)}>delete Todo</button>
-            <button onClick={() =>handleToggleFinish(todo.name)}>finish Todo</button>
-          </div>
+          <li key={todo.id}>
+            <h3> {todo.name}</h3>
+            <span>todo id: {todo.id}</span>
+            <h6> todo is finished or not? <mark>{todo.done? 'yes' : 'no'}</mark></h6>
+            <button onClick={() =>handleDelete(todo.id)}>delete Todo</button>
+            <button onClick={() =>handleToggleFinish(todo.id)}>finish Todo</button>
+          </li>
         )
         ) }
     </ul>
