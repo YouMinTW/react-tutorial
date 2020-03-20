@@ -13,6 +13,14 @@ const TodoCollection = () => {
       setNewTodo('')
     }
   }
+  const handleDelete = (name) =>{
+    const filterTodos = todos.filter((todo) =>todo.name !== name)
+    setTodos(filterTodos)
+  }
+  const handleToggleFinish  = (name) =>{
+    const filterTodos = todos.map((todo) => todo.name === name ? { name:todo.name,done:!todo.done} : todo)
+    setTodos(filterTodos)
+  }
   return (
     <>
     <form onSubmit={handleSubmit}>
@@ -20,8 +28,16 @@ const TodoCollection = () => {
       <button onClick={handleSubmit}>新增個todo吧 另一種方式</button>
       <button type='submit'>新增個todo</button>
     </form>
+
     <ul>
-        { todos.map(todo => <li key={todo.name}>{todo.name}</li>) }
+        { todos.map(todo => (
+          <>
+          <li key={todo.name}>{todo.name}</li>
+          <button onClick={() =>handleDelete(todo.name)}>delete Todo</button>
+          <button onClick={() =>handleToggleFinish(todo.name)}>finish Todo</button>
+          </>
+        )
+        ) }
     </ul>
     </>
   )
