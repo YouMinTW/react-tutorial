@@ -31,11 +31,11 @@ const TodoCollection = () => {
 
     <ul>
         { todos.map(todo => (
-          <>
-          <li key={todo.name}>{todo.name}</li>
-          <button onClick={() =>handleDelete(todo.name)}>delete Todo</button>
-          <button onClick={() =>handleToggleFinish(todo.name)}>finish Todo</button>
-          </>
+          <div key={todo.name}>
+            <li> {todo.name}</li>
+            <button onClick={() =>handleDelete(todo.name)}>delete Todo</button>
+            <button onClick={() =>handleToggleFinish(todo.name)}>finish Todo</button>
+          </div>
         )
         ) }
     </ul>
