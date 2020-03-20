@@ -1,11 +1,18 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
 const TodoCollection = () => {
-  const [ todos,setTodos ] = React.useState([{id:uuidv4(), name:'刷牙',done:false},{id:uuidv4(),name:'遛狗',done:false}])
+  const [ todos,setTodos ] = React.useState([])
   const [ newTodo,setNewTodo ] = React.useState('')
   const handleChange = (e) => {
     setNewTodo(e.currentTarget.value)
   }
+  React.useEffect(() => {
+    let todosFromStorage = JSON.parse(localStorage.getItem("todos"));
+    setTodos(todosFromStorage)
+  },[])
+  React.useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  },[todos])
   const handleSubmit = (e) => {
     e.preventDefault()
     if(newTodo !== ''){
