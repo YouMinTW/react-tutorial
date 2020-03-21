@@ -54,7 +54,7 @@ const TodoCollection = () => {
     </form>
 
     <ul>
-        { todos.map(todo => (
+        { todos && todos.map(todo => (
           <li key={todo.id}>
             <h3> {todo.name}</h3>
             <span>todo id: {todo.id}</span>
