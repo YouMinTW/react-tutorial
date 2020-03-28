@@ -26,14 +26,14 @@ function App() {
 
         <hr />
         <Switch>
-          <Route path="/">
-            <Home />
-          </Route>
           <Route path="/about">
             <About />
           </Route>
           <Route path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>
