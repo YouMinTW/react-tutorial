@@ -35,6 +35,9 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
+          <Route path="*">
+            <NoMatch />
+          </Route>
         </Switch>
       </div>
     </Router>
@@ -62,6 +65,14 @@ function Dashboard() {
   return (
     <div>
       <h2>Dashboard</h2>
+    </div>
+  );
+}
+
+function NoMatch() {
+  return (
+    <div>
+      <h2>No match, 404 Not found</h2>
     </div>
   );
 }
