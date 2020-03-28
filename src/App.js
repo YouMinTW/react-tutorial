@@ -4,7 +4,8 @@ import {
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  useParams
 } from "react-router-dom";
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
+          <Route path="/post/:postID">
+            <Post />
+          </Route>
           <Route path="*">
             <NoMatch />
           </Route>
@@ -54,6 +58,14 @@ function Home() {
   return (
     <div>
       <h2>Home</h2>
+    </div>
+  );
+}
+function Post() {
+  let { postID } = useParams();
+  return (
+    <div>
+      <h2>Title post number is {postID}</h2>
     </div>
   );
 }
