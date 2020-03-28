@@ -25,6 +25,7 @@ function App() {
         </ul>
 
         <hr />
+        <Switch>
           <Route path="/">
             <Home />
           </Route>
@@ -34,6 +35,7 @@ function App() {
           <Route path="/dashboard">
             <Dashboard />
           </Route>
+        </Switch>
       </div>
     </Router>
   );
