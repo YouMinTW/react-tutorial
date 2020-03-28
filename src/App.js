@@ -63,9 +63,16 @@ function Home() {
 }
 function Post() {
   let { postID } = useParams();
+  const [ post, setPost ] = React.useState()
+  React.useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then(response => response.json())
+      .then(json => setPost(json))
+  },[postID])
   return (
     <div>
-      <h2>Title post number is {postID}</h2>
+      <h2>Title post title is {post&&post.title}</h2>
+      <p>{post&&post.body}</p>
     </div>
   );
 }
