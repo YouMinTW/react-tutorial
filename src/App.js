@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 function App() {
@@ -29,9 +30,13 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
+          <Route path="/about-me">
             <About />
           </Route>
+          <Redirect
+            from='/about'
+            to='/about-me'
+          />
           <Route path="/dashboard">
             <Dashboard />
           </Route>
